@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soccer Tracker</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: auto; padding: 20px; }
+        input { padding: 8px; margin: 5px; width: 100%; }
+        button { padding: 10px; margin-top: 10px; width: 100%; }
+        .game-entry { margin-bottom: 20px; padding: 10px; background: #f1f1f1; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+
+    <h1>Soccer Shot & Goal Tracker</h1>
+
+    {% if message %}
+        <p class="success">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label>Shots:</label>
+        <input type="number" name="shots" required>
+
+        <label>Goals:</label>
+        <input type="number" name="goals" required>
+
+        <button type="submit">Add Game</button>
+    </form>
+
+    <h2>Game Log</h2>
+    {% for shots, goals in zip(shots_list, goals_list) %}
+        <div class="game-entry">
+            <strong>Game {{ loop.index }}</strong><br>
+            Shots: {{ shots }} | Goals: {{ goals }}
+        </div>
+    {% endfor %}
+
+    <h2>Totals</h2>
+    <p>Total Shots: {{ total_shots }}</p>
+    <p>Total Goals: {{ total_goals }}</p>
+    <p>Shooting %: {{ shooting_percentage }}%</p>
+
+</body>
+</html>
