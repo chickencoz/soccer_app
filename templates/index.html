@@ -29,10 +29,10 @@
     </form>
 
     <h2>Game Log</h2>
-    {% for shots, goals in zip(shots_list, goals_list) %}
+    {% for i in range(shots_list|length) %}
         <div class="game-entry">
-            <strong>Game {{ loop.index }}</strong><br>
-            Shots: {{ shots }} | Goals: {{ goals }}
+            <strong>Game {{ i + 1 }}</strong><br>
+            Shots: {{ shots_list[i] }} | Goals: {{ goals_list[i] }}
         </div>
     {% endfor %}
 
